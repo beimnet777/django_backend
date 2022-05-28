@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class EmployeeProfile(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     employee_name = models.CharField(max_length=100)
     employee_age = models.IntegerField()
     employee_specialization = models.CharField(max_length = 100)
@@ -16,12 +17,14 @@ class EmployeeProfile(models.Model):
     skills_4=models.CharField(max_length=60)
 
 class EmployerProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     employer_name = models.CharField(max_length=100)
     employer_city=models.CharField(max_length=60)
     employer_sub_city=models.CharField(max_length=60)
     employer_function = models.CharField(max_length = 100)
 
 class Job(models.Model):
+    
     job_name = models.CharField(max_length= 100)
     job_experience_years = models.IntegerField()
     job_description = models.TextField()
