@@ -1,5 +1,7 @@
 from rest_framework import generics,viewsets
 from django.contrib.auth.models import User
+
+from general_api.pagination import customPageNumberPagination
 from .models import EmployeeProfile, EmployerProfile, Job
 from .serializer import EmployeeSerializer,EmployerSerializer,JobSerializer,EmployeeUserSerializer,EmployerUserSerializer
 
@@ -25,6 +27,7 @@ class EmployerUserViewSet(viewsets.ModelViewSet):
     serializer_class = EmployerUserSerializer
 class JobLister(generics.ListAPIView):
     queryset = Job.objects.all()
+    pagination_class = customPageNumberPagination
     serializer_class = JobSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['job_name']
