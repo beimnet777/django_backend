@@ -1,7 +1,7 @@
-from django.shortcuts import render
 from rest_framework import generics,viewsets
+from django.contrib.auth.models import User
 from .models import EmployeeProfile, EmployerProfile, Job
-from .serializer import EmployeeSerializer,EmployerSerializer,JobSerializer
+from .serializer import EmployeeSerializer,EmployerSerializer,JobSerializer,EmployeeUserSerializer,EmployerUserSerializer
 
 
 
@@ -17,3 +17,9 @@ class EmployerProfileView(viewsets.ModelViewSet):
 class JobViewSet(viewsets.ModelViewSet):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
+class EmployeeUserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = EmployeeUserSerializer
+class EmployerUserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = EmployerUserSerializer
