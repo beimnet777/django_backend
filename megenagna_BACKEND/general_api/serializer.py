@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 
-from .models import EmployeeProfile, EmployerProfile,Job
+from .models import EmployeeProfile, EmployerProfile,Job,Application
 
 
 class EmployeeUserSerializer(serializers.ModelSerializer):
@@ -43,6 +43,9 @@ class EmployerSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
-        fields = ('id','job_name','job_experience_years','job_description','job_benefits',
+        fields = ('id','name','job_experience_years','job_description','job_benefits',
         'job_salary','skills_needed_1','skills_needed_2','skills_needed_3','skills_needed_4','user')
-        
+class ApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields =  '__all__'      

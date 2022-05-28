@@ -27,7 +27,7 @@ class EmployerProfile(models.Model):
 
 class Job(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    job_name = models.CharField(max_length= 100)
+    name = models.CharField(max_length= 100)
     job_experience_years = models.IntegerField()
     job_description = models.TextField()
     job_benefits=models.TextField()
