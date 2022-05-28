@@ -42,4 +42,5 @@ class Application(models.Model):
     degree=models.CharField(max_length=100)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     sex=models.CharField(max_length=10)
+    experience=models.IntegerField()
 
