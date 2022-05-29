@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'general_api',
     'django_filters',
+    'analytics'
 
 ]
 REST_FRAMEWORK = {

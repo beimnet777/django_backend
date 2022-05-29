@@ -26,7 +26,7 @@ class EmployerProfile(models.Model):
 
 class Job(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    job_name = models.CharField(max_length= 100)
+    name = models.CharField(max_length= 100)
     job_experience_years = models.IntegerField()
     job_description = models.TextField()
     job_benefits=models.TextField()
@@ -36,12 +36,13 @@ class Job(models.Model):
     skills_needed_3=models.CharField(max_length=60)
     skills_needed_4=models.CharField(max_length=60)
 class Application(models.Model):
-    job = models.OneToOneField(Job, on_delete=models.CASCADE, null=True)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
     experience = models.IntegerField()
     gpa=models.FloatField(max_length=3)
     degree=models.CharField(max_length=100)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     sex=models.CharField(max_length=10)
     experience=models.IntegerField() 
+    age=models.IntegerField()
 
 
