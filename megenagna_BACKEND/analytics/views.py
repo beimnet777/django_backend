@@ -1,11 +1,11 @@
 from general_api.models import Application
 from rest_framework.decorators import api_view
-from .serializer import AnalyticSerializer
+
 from .models import Analytics
 from rest_framework import status
 from rest_framework.response import Response
 from django.core import serializers
-from django.http import JsonResponse
+
 
 @api_view(['GET'])
 def get_analytics(request,id):
