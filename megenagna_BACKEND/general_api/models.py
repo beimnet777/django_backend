@@ -17,6 +17,7 @@ class EmployeeProfile(models.Model):
     skills_3=models.CharField(max_length=60)
     skills_4=models.CharField(max_length=60)
     sex=models.CharField(max_length=10)
+    image=models.ImageField(upload_to='static')
 
 class EmployerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -24,6 +25,8 @@ class EmployerProfile(models.Model):
     employer_city=models.CharField(max_length=60)
     employer_sub_city=models.CharField(max_length=60)
     employer_function = models.CharField(max_length = 100)
+    image=models.ImageField(upload_to='static')
+    
 
 class Job(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -36,6 +39,7 @@ class Job(models.Model):
     skills_needed_2=models.CharField(max_length=60)
     skills_needed_3=models.CharField(max_length=60)
     skills_needed_4=models.CharField(max_length=60)
+    image=models.ImageField(upload_to='static')
 class Application(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     experience = models.IntegerField()
@@ -45,5 +49,6 @@ class Application(models.Model):
     sex=models.CharField(max_length=10)
     experience=models.IntegerField() 
     age=models.IntegerField()
+    status=models.IntegerField()
 
 
