@@ -26,6 +26,7 @@ class login(APIView):
     return Response(status=status.HTTP_401_UNAUTHORIZED)
 class Logout(APIView):
   def post(self,request):
+    
     response=Response()
     response.delete_cookie('jwt')
     response.data={

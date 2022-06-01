@@ -2,10 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 # Create your models here.
 class EmployeeProfile(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     employee_name = models.CharField(max_length=100)
     employee_age = models.IntegerField()
     employee_specialization = models.CharField(max_length = 100)
@@ -17,15 +18,15 @@ class EmployeeProfile(models.Model):
     skills_3=models.CharField(max_length=60)
     skills_4=models.CharField(max_length=60)
     sex=models.CharField(max_length=10)
-    image=models.ImageField(upload_to='static')
+    image=models.ImageField(upload_to='static',null=True)
 
 class EmployerProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     employer_name = models.CharField(max_length=100)
     employer_city=models.CharField(max_length=60)
     employer_sub_city=models.CharField(max_length=60)
     employer_function = models.CharField(max_length = 100)
-    image=models.ImageField(upload_to='static')
+    image=models.ImageField(upload_to='static',null=True)
     
 
 class Job(models.Model):
@@ -39,7 +40,7 @@ class Job(models.Model):
     skills_needed_2=models.CharField(max_length=60)
     skills_needed_3=models.CharField(max_length=60)
     skills_needed_4=models.CharField(max_length=60)
-    image=models.ImageField(upload_to='static')
+    image=models.ImageField(upload_to='static',null=True)
 class Application(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     experience = models.IntegerField()

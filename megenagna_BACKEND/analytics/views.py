@@ -4,11 +4,16 @@ from rest_framework.decorators import api_view
 from .models import Analytics
 from rest_framework import status
 from rest_framework.response import Response
+from django.http import JsonResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
+from general_api.views import allowed_users
+
+
 
 @api_view(['GET'])
 @login_required
+@allowed_users(['Employer'])
 def get_analytics(request,id):
   age_18_29= Application.objects.filter(age__range=(18, 29),job=id ).count()
   age_30_50= Application.objects.filter(age__range=(30, 50) ,job=id ).count()
@@ -49,7 +54,7 @@ def get_analytics(request,id):
   data = serializers.serialize("json", [analytic])
   
   
-  return Response(data,status=status.HTTP_200_OK)
+  return JsonResponse(dict)
 
 
 
